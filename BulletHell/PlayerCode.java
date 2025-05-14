@@ -12,18 +12,18 @@ public class PlayerCode
     PlayerStats playerStats = new PlayerStats();
     int drag = 1;
     
-    int screenWidth = globalData.screenWidth;
-    int screenHeight = globalData.screenHeight;
+    int screenWidth = globalData.SCREENWIDTH;
+    int screenHeight = globalData.SCREENHEIGHT;
     
     int playerSize = playerStats.playerSize;
-    int playerX = 100;
-    int playerY = 100;
-    int playerXHOLD = 0;
-    int playerYHOLD = 0;
-    int playerSpeed = 2;
-    int playerMaxSpeed = 10;
-    int playerDashDistance = 12;
-    int playerDashCooldown = 2;
+    int playerX = playerStats.playerX;
+    int playerY = playerStats.playerY;
+    int playerXHOLD = playerStats.playerXHOLD;
+    int playerYHOLD = playerStats.playerYHOLD;
+    int playerSpeed = playerStats.playerSpeed;
+    int playerMaxSpeed = playerStats.playerMaxSpeed;
+    int playerDashDistance = playerStats.playerDashDistance;
+    int playerDashCooldown = playerStats.playerDashCooldown;
     
     public void update()
     {
@@ -64,19 +64,19 @@ public class PlayerCode
     {
         if(playerY > screenHeight - 10){
             playerY = 0;
-            System.out.println("player touching bottom wall");
+            //System.out.println("player touching bottom wall");
         }
         if(playerY < 0){
             playerY = screenHeight - 10;
-            System.out.println("player touching top wall");
+            //System.out.println("player touching top wall");
         }
         if(playerX > screenWidth - 10){
             playerX = 0;
-            System.out.println("player touching right wall");
+            //System.out.println("player touching right wall");
         }
         if(playerX < 0){
             playerX = screenWidth - 10;
-            System.out.println("player touching left wall");
+            //System.out.println("player touching left wall");
         }
     }
 }

@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=BulletTemplate
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ BulletData\ here.\r\n\r\n\ @author\ Zachary\ Quinn\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=size
+comment1.target=void\ SetSize(int)
+comment2.params=speed
+comment2.target=void\ SetSpeed(int)
+comment3.params=rotation
+comment3.target=void\ SetRotation(int)
+numComments=4

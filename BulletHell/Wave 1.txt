@@ -1,5 +1,24 @@
 **Title:Wave 1**
 **Example**
-**Bullet: Rotation, Speed**
-************
-Bullet: 90,5
+**Bullet: Rotation, Speed, Size**
+**
+**Bullet stats will be set to deafult if replaced with a *
+**Example:
+**Bullet: *,*,*
+**This will output:
+**Bullet:0,2,8
+**Pause:3
+**************
+Bullet:0,2,8
+Bullet:90,2,8
+Bullet:180,2,8
+Bullet:270,2,8
+**************
+Pause:1
+**************
+Bullet:0,2,8
+Bullet:90,2,8
+Bullet:180,2,8
+Bullet:270,2,8
+**************
+Pause:1

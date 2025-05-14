@@ -2,5 +2,5 @@
 comment0.target=WaveSystem
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ WaveSystem\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
-comment1.target=void\ RunWaveSystem()
+comment1.target=java.util.List\ RunWaveSystem()
 numComments=2

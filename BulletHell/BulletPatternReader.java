@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 /**
  * Write a description of class BulletPatternReader here.
@@ -9,7 +11,8 @@ import java.util.Scanner;
  */
 public class BulletPatternReader
 {
-    public void main(){
+    public List<String> main(){
+        List<String> TempArray = new ArrayList<>();
         try{
             Scanner myReader = new Scanner(new File("Wave 1.txt"));
             while(myReader.hasNextLine())
@@ -17,7 +20,7 @@ public class BulletPatternReader
                 String data = myReader.nextLine();
                 if(!data.contains("**"))
                 {
-                    System.out.println(data);
+                    TempArray.add(data);
                 }
             }
             myReader.close();
@@ -25,5 +28,6 @@ public class BulletPatternReader
         {
             e.printStackTrace();
         }
+        return(TempArray);
     }
 }

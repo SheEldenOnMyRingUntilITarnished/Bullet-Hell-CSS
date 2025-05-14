@@ -11,10 +11,10 @@ public class GlobalData
     final int scale=3; 
     
     final int tileSize=originalTileSize*scale;//48*48 tile
-    final int maxScreenCol=16;
-    final int maxScreenRow=12;
-    final int screenWidth = tileSize*maxScreenCol;
-    final int screenHeight = tileSize*maxScreenRow;
+    final int maxScreenCol=20;
+    final int maxScreenRow=20;
+    final int SCREENWIDTH = tileSize*maxScreenCol;
+    final int SCREENHEIGHT = tileSize*maxScreenRow;
     
     //FPS
     int FPS = 60;
