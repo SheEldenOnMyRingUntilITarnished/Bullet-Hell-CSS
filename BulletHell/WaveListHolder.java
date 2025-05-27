@@ -12,6 +12,7 @@ public class WaveListHolder
     public List<List> WaveList = waveSystem.RunWaveSystem();
     public List<List> WaveList()
     {
+        //System.out.println("WaveList Contains :" + WaveList);
         return(WaveList);
     }
 }

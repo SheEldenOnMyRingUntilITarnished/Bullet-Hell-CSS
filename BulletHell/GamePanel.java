@@ -85,12 +85,12 @@ public class GamePanel extends JPanel implements Runnable
         
         g2.setColor(Color.green);
         g2.fillRect(playerCode.playerX, playerCode.playerY, playerCode.playerSize, playerCode.playerSize);
-        System.out.println("waveListHolder.WaveList().size() == " + waveListHolder.WaveList().size());
+        //System.out.println("waveListHolder.WaveList().size() == " + waveListHolder.WaveList().size());
         for(int x = 0; x < waveListHolder.WaveList().size(); x++)
         {
-            System.out.println(waveListHolder.WaveList().get(x));
+            //System.out.println(waveListHolder.WaveList().get(x));
             List<BulletTemplate> TempBulletHolder = waveListHolder.WaveList().get(x);
-            System.out.println("TempBulletHolder.size() == " + TempBulletHolder.size());
+            //System.out.println("TempBulletHolder.size() == " + TempBulletHolder.size());
             for(int i = 0; i < TempBulletHolder.size(); i++)
             {
                 System.out.println(i);

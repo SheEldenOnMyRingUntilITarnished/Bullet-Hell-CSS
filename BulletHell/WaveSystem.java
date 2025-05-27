@@ -25,29 +25,36 @@ public class WaveSystem
                 //System.out.println(temp[0]);
                 if(temp[0].equals("Bullet"))
                 {
-                    //System.out.println("BULLET at Read line :" + i);
-        
-                    TempBulletHolderArray.add(new BulletTemplate());
+                    System.out.println("BULLET at Read line :" + i);
+                    BulletTemplate bulletTemplate = new BulletTemplate();
                     
-                    TempBulletHolderArray.get(bulletsCount).SetRotation(Integer.valueOf(temp[1]));
-                    //System.out.println(Integer.valueOf(temp[1]));
+                    bulletTemplate.SetRotation(Integer.valueOf(temp[1]));
+                    System.out.println(Integer.valueOf(temp[1]));
                     
-                    TempBulletHolderArray.get(bulletsCount).SetSpeed(Integer.valueOf(temp[2]));
-                    //System.out.println(Integer.valueOf(temp[2]));
+                    bulletTemplate.SetSpeed(Integer.valueOf(temp[2]));
+                    System.out.println(Integer.valueOf(temp[2]));
                     
-                    TempBulletHolderArray.get(bulletsCount).SetSize(Integer.valueOf(temp[3]));
-                    //System.out.println(Integer.valueOf(temp[3]));
+                    bulletTemplate.SetSize(Integer.valueOf(temp[3]));
+                    System.out.println(Integer.valueOf(temp[3]));
+                    System.out.println("bulletTemplate Contains :" + bulletTemplate);
+                    
+                    TempBulletHolderArray.add(bulletsCount , bulletTemplate);
+                    System.out.println("TempBulletHolderArray Contains :" + TempBulletHolderArray);
+                    
                     bulletsCount++;
                 }
                 else if(temp[0].equals("Pause"))
                 {
-                    //System.out.println("Pause at Read line :" + i);
+                    System.out.println("Pause at Read line :" + i);
+                    System.out.println("TempBulletHolderArray Contains :" + TempBulletHolderArray);
                     TempListArray.add(TempBulletHolderArray);
+                    System.out.println("TempListArray Contains :" + TempListArray);
                     NoSpace = false;
                 }
                 i++;
             }
         }
+        System.out.println("TempListArray Contains :" + TempListArray);
         return(TempListArray);
     }
 }
