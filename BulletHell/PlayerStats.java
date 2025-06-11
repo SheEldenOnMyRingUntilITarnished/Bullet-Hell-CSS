@@ -16,6 +16,6 @@ public class PlayerStats
     int playerYHOLD = 0;
     int playerSpeed = 2;
     int playerMaxSpeed = 10;
-    int playerDashDistance = 12;
+    int playerDashDistance = 22;
     int playerDashCooldown = 2;
 }

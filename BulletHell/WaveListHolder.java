@@ -9,10 +9,19 @@ import java.util.ArrayList;
 public class WaveListHolder
 {
     WaveSystem waveSystem = new WaveSystem();
+    
     public List<List> WaveList = waveSystem.RunWaveSystem();
+    public List<String> PauseTimeList = waveSystem.ReturnPauseTimes();
+    
     public List<List> WaveList()
     {
         //System.out.println("WaveList Contains :" + WaveList);
         return(WaveList);
+    }
+    
+    public List<String> PauseTimeList()
+    {
+        //System.out.println("PauseTimeList Contains :" + PauseTimeList);
+        return(PauseTimeList);
     }
 }

@@ -17,5 +17,5 @@ public class GlobalData
     final int SCREENHEIGHT = tileSize*maxScreenRow;
     
     //FPS
-    int FPS = 60;
+    final int FPS = 60;
 }

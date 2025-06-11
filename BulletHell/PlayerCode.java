@@ -24,6 +24,7 @@ public class PlayerCode
     int playerMaxSpeed = playerStats.playerMaxSpeed;
     int playerDashDistance = playerStats.playerDashDistance;
     int playerDashCooldown = playerStats.playerDashCooldown;
+    static int currentDashCooldown = 0;
     
     public void update()
     {
@@ -39,9 +40,6 @@ public class PlayerCode
         if(keyH.rightPressed == true){
             playerXHOLD += playerSpeed;
         }
-        if(keyH.dashPressed == true){
-            playerXHOLD += playerDashDistance;
-        }
         
         if(playerYHOLD > 0){playerYHOLD -= drag;}
         if(playerYHOLD < 0){playerYHOLD += drag;}
@@ -52,6 +50,11 @@ public class PlayerCode
         if(playerYHOLD < -playerMaxSpeed){playerYHOLD = -playerMaxSpeed;}
         if(playerXHOLD > playerMaxSpeed){playerXHOLD = playerMaxSpeed;}
         if(playerXHOLD < -playerMaxSpeed){playerXHOLD = -playerMaxSpeed;}
+        
+        if(keyH.dashPressed == true && currentDashCooldown < 0){
+            playerXHOLD += playerDashDistance;
+            currentDashCooldown = playerDashCooldown;
+        }
         playerY += playerYHOLD;
         playerX += playerXHOLD;
         playerCollideWithEdge();
