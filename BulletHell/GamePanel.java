@@ -76,7 +76,7 @@ public class GamePanel extends JPanel implements Runnable
             if(timer >= 1000000000)
             {
                 System.out.println("FPS:" + drawCount);
-                System.out.println("currentPause:" + currentPause);
+                //System.out.println("currentPause:" + currentPause);
                 drawCount = 0;
                 timer = 0;
                 PlayerCode.currentDashCooldown--;
@@ -115,21 +115,49 @@ public class GamePanel extends JPanel implements Runnable
             List<BulletTemplate> TempBulletHolder = waveListHolder.WaveList().get(x);
             for(int i = 0; i < TempBulletHolder.size(); i++)
             {
-                System.out.println("Current i is : " + i);
+                //System.out.println("Current i is : " + i);
                 g2.setColor(Color.red);
                 BulletTemplate tempBullet = TempBulletHolder.get(i);                
                 double Angle = Math.toRadians(tempBullet.Rotation);
                 
+                //System.out.println("tempBullet.Angle: " + Math.cos(Angle));
+                //System.out.println("tempBullet.Angle: " + Math.sin(Angle));
+                
+                //System.out.println("tempBullet.x Before: " + tempBullet.x);
+                //System.out.println("tempBullet.y Before: " + tempBullet.y);
+                
                 tempBullet.x += tempBullet.Speed * Math.cos(Angle);
                 tempBullet.y += tempBullet.Speed * Math.sin(Angle);
-                System.out.println("tempBullet.x: " + tempBullet.x);
-                System.out.println("tempBullet.y: " + tempBullet.y);
+                
+                //System.out.println("tempBullet.x After: " + tempBullet.x);
+                //System.out.println("tempBullet.y After: " + tempBullet.y);
                 //System.out.println("TempBulletHolder.size: " + TempBulletHolder.size());
                 
-                g2.fillRect(tempBullet.x, tempBullet.y, tempBullet.Size, tempBullet.Size);
+                bulletCollideWithEdge(tempBullet);
+                
+                g2.fillRect((int)tempBullet.x, (int)tempBullet.y, tempBullet.Size, tempBullet.Size);
             }
-            System.out.println("Bullet Layer Complete now pause");
+            //System.out.println("Bullet Layer Complete now pause");
         }
     }
     
+    public void bulletCollideWithEdge(BulletTemplate tempBullet)
+    {
+        if(tempBullet.y > GlobalData.SCREENHEIGHT - 10){
+            tempBullet.y = 0;
+            //System.out.println("player touching bottom wall");
+        }
+        if(tempBullet.y < 0){
+            tempBullet.y = GlobalData.SCREENHEIGHT - 10;
+            //System.out.println("player touching top wall");
+        }
+        if(tempBullet.x > GlobalData.SCREENWIDTH - 10){
+            tempBullet.x = 0;
+            //System.out.println("player touching right wall");
+        }
+        if(tempBullet.x < 0){
+            tempBullet.x = GlobalData.SCREENWIDTH - 10;
+            //System.out.println("player touching left wall");
+        }
+    }
 }

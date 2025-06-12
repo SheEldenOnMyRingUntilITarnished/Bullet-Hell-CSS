@@ -8,8 +8,8 @@
 public class BulletTemplate
 {
     GlobalData globalData = new GlobalData();
-    int x = globalData.SCREENWIDTH/2;
-    int y = globalData.SCREENHEIGHT/2;
+    double x = globalData.SCREENWIDTH/2;
+    double y = globalData.SCREENHEIGHT/2;
     int Speed = 2;
     double Rotation = 0;
     int Size = 4;
