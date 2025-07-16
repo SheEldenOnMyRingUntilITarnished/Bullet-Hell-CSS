@@ -14,7 +14,7 @@ public class SimplebulletHell
         window.setResizable(false);
         window.setTitle("Void Dash");
         
-        GamePanel gamepanel=new GamePanel();
+        GamePanel gamepanel = new GamePanel();
         window.add(gamepanel);
         
         window.pack();

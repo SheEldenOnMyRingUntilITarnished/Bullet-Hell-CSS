@@ -75,6 +75,14 @@ public class GamePanel extends JPanel implements Runnable
             //Updates every second
             if(timer >= 1000000000)
             {
+                if(GlobalData.Reset = true)
+                {
+
+                    for(int x = 0; x < volleysShot; x++){
+                         //waveListHolder.WaveList().remove(x);
+                    }
+                    GlobalData.Reset = false; 
+                }
                 System.out.println("FPS:" + drawCount);
                 //System.out.println("currentPause:" + currentPause);
                 drawCount = 0;

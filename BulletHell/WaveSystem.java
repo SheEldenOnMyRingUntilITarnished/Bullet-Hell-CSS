@@ -18,17 +18,17 @@ public class WaveSystem
     
     public List<List> RunWaveSystem(){
         BulletPatternReader bulletPatternReader = new BulletPatternReader();
-        for(int i = 0; i < bulletPatternReader.main().size();i++)
+        for(int i = 0; i < bulletPatternReader.main("Wave 1").size() - 1;i++)
         {
             List<BulletTemplate> TempBulletHolderArray = new ArrayList<>();
-            System.out.println(bulletPatternReader.main().size());
+            System.out.println(bulletPatternReader.main("Wave 1").size());
             System.out.println(i);
             boolean NoSpace = true;
             while(NoSpace == true)
             {
                 int bulletsCount = 0;
                 
-                String[] temp = bulletPatternReader.main().get(i).split("[,\\:]");
+                String[] temp = bulletPatternReader.main("Wave 1").get(i).split("[,\\:]");
                 System.out.println("temp[0]:"+temp[0]);
                 if(temp[0].equals("Bullet"))
                 {
@@ -49,6 +49,10 @@ public class WaveSystem
                     //System.out.println("TempBulletHolderArray Contains :" + TempBulletHolderArray);
                     
                     bulletsCount++;
+                }
+                else if(temp[0].equals("Reset"))
+                {
+                    GlobalData.Reset = true;
                 }
                 else if(temp[0].equals("Pause"))
                 {

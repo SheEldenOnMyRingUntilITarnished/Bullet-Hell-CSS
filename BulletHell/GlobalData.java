@@ -18,4 +18,5 @@ public class GlobalData
     
     //FPS
     final int FPS = 60;
+    static boolean Reset = false;
 }
