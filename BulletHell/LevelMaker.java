@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
  */
 public class LevelMaker
 {
-    //THIS IS NOT FOR PLAYER USE THIS IS PURLEY FOR MY OWN USAGE TO QUICKLY DEVELOPE LEVELS
+    //THIS IS NOT FOR PLAYER USE THIS IS PURELEY FOR MY OWN USAGE TO QUICKLY DEVELOPE LEVELS
     public static void main()
     {
         String tempString = "";
@@ -42,6 +42,11 @@ public class LevelMaker
                     System.out.println("What new attack do you want to add to the wave?");
                     tempString = keyboard.nextLine();
                     System.out.println("tempString: " + tempString);
+                    switch(tempString)
+                    {
+                        case"Spin":
+                        break;
+                    }
                     if(tempString.equals("Spin"))
                     {
                         ReadAttack(myWriter,"SpinAttack");
