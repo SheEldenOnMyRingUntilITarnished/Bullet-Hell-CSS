@@ -53,6 +53,8 @@ public class GamePanel extends JPanel implements Runnable
         long timer = 0;
         int drawCount = 0;
         
+        String targetWave = "";
+        
         while (gameThread != null)
         {
             currentTime = System.nanoTime();
@@ -67,7 +69,7 @@ public class GamePanel extends JPanel implements Runnable
                 playerCode.update();
                 currentPause--;
                 repaint();
-                if(volleysShot != waveListHolder.WaveList.size() && currentPause <= 0){volleysShot++; currentPause = Integer.parseInt(waveListHolder.PauseTimeList().get(volleysShot - 1));}
+                if(volleysShot != waveListHolder.WaveList(targetWave).size() && currentPause <= 0){volleysShot++; currentPause = Integer.parseInt(waveListHolder.PauseTimeList().get(volleysShot - 1));}
                 delta--;
                 drawCount++;
             }

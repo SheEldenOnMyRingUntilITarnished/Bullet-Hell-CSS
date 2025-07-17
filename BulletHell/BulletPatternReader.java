@@ -14,7 +14,7 @@ public class BulletPatternReader
     public List<String> main(String TargetWave){
         List<String> TempArray = new ArrayList<>();
         try{
-            Scanner myReader = new Scanner(new File("Waves/"+"PEAK1"+".txt"));
+            Scanner myReader = new Scanner(new File("Waves/"+TargetWave+".txt"));
             while(myReader.hasNextLine())
             {
                 String data = myReader.nextLine();

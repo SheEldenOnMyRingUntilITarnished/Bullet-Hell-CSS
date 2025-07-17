@@ -7,13 +7,13 @@ import java.io.FileNotFoundException;
 /**
  * Write a description of class LevelMaker here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Zachary Quinn)
+ * @version (0.3)
  */
 public class LevelMaker
 {
     //THIS IS NOT FOR PLAYER USE THIS IS PURELEY FOR MY OWN USAGE TO QUICKLY DEVELOPE LEVELS
-    public static void main()
+    public LevelMaker()
     {
         String tempString = "";
         Scanner keyboard = new Scanner(System.in);
@@ -45,24 +45,59 @@ public class LevelMaker
                     switch(tempString)
                     {
                         case"Spin":
-                        break;
-                    }
-                    if(tempString.equals("Spin"))
-                    {
-                        ReadAttack(myWriter,"SpinAttack");
-                        System.out.println("Added Spin Attack");
-                    }else if(tempString.equals("Cross"))
-                    {
-                        ReadAttack(myWriter,"CrossAttack");
-                        System.out.println("Added Cross Attack");
-                    }else if(tempString.equals("Done"))
-                    {
-                        waveFinished = true;
-                        System.out.println("Finished new wave");
-                    }else
-                    {
-                        System.out.println("Missing refrence in code, did you spell the attack right?");
-                    }
+                            ReadAttack(myWriter,"SpinAttack");
+                            System.out.println("Added Spin Attack");
+                            break;
+                        
+                        case"Cross":
+                            ReadAttack(myWriter,"CrossAttack");
+                            System.out.println("Added Cross Attack");
+                            break;
+                        
+                        case"Circle":
+                            ReadAttack(myWriter,"CircleAttack");
+                            System.out.println("Added Circle Attack");
+                            break;
+
+                        case"HalfCircleUpwards":
+                            ReadAttack(myWriter,"HalfCircleUpwardsAttack");
+                            System.out.println("Added Half Circle Upwards Attack");
+                            break;
+
+                        case"HalfCircleDownwards":
+                            ReadAttack(myWriter,"HalfCircleDownwardsAttack");
+                            System.out.println("Added Circle Attack");
+                            break;
+
+                        case"HalfCircleLeftwards":
+                            ReadAttack(myWriter,"HalfCircleLeftwardsAttack");
+                            System.out.println("Added Circle Attack");
+                            break;
+
+                        case"HalfCircleRightwards":
+                            ReadAttack(myWriter,"HalfCircleRightwardsAttack");
+                            System.out.println("Added Circle Attack");
+                            break;
+
+                        case"Pause:1":
+                            ReadAttack(myWriter,"Pause1");
+                            System.out.println("Added Pause 1");
+                            break;
+
+                        case"Pause:5":
+                            ReadAttack(myWriter,"Pause5");
+                            System.out.println("Added Pause 5");
+                            break;
+
+                        case"Done":
+                            waveFinished = true;
+                            System.out.println("Finished new wave");
+                            break;
+                        
+                        default:
+                            System.out.println("Missing refrence in code, did you spell the attack right?");
+                            System.out.println("Your input is: " + tempString);
+                        }
                 }
                 myWriter.close();
                 System.out.println("Successfully wrote to the file.");

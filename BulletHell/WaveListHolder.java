@@ -10,12 +10,12 @@ public class WaveListHolder
 {
     WaveSystem waveSystem = new WaveSystem();
     
-    public List<List> WaveList = waveSystem.RunWaveSystem();
     public List<String> PauseTimeList = waveSystem.ReturnPauseTimes();
     
-    public List<List> WaveList()
+    public List<List> WaveList(String targetWave)
     {
         //System.out.println("WaveList Contains :" + WaveList);
+        List<List> WaveList = waveSystem.RunWaveSystem(targetWave);
         return(WaveList);
     }
     

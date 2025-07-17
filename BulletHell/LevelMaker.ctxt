@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=LevelMaker
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ LevelMaker\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ LevelMaker\ here.\r\n\r\n\ @author\ (Zachary\ Quinn)\r\n\ @version\ (0.3)\r\n
 comment1.params=
-comment1.target=void\ main()
+comment1.target=LevelMaker()
 comment2.params=waveName
 comment2.target=void\ createNewWave(java.lang.String)
 comment3.params=myWriter\ attackType
