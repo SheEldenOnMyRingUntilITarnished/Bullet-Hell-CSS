@@ -43,6 +43,7 @@ public class GamePanel extends JPanel implements Runnable
     }
     
     @Override
+    //this is the main Gameplay loop
     public void run()
     {
         
@@ -54,7 +55,7 @@ public class GamePanel extends JPanel implements Runnable
         int drawCount = 0;
         
         String targetWave = "";
-        
+        //this runs until the player closes the game
         while (gameThread != null)
         {
             currentTime = System.nanoTime();
@@ -69,7 +70,7 @@ public class GamePanel extends JPanel implements Runnable
                 playerCode.update();
                 currentPause--;
                 repaint();
-                if(volleysShot != waveListHolder.WaveList(targetWave).size() && currentPause <= 0){volleysShot++; currentPause = Integer.parseInt(waveListHolder.PauseTimeList().get(volleysShot - 1));}
+                if(volleysShot < waveListHolder.WaveList.size() && currentPause <= 0){volleysShot++; currentPause = Integer.parseInt(waveListHolder.PauseTimeList().get(volleysShot - 1));}
                 delta--;
                 drawCount++;
             }
@@ -77,15 +78,24 @@ public class GamePanel extends JPanel implements Runnable
             //Updates every second
             if(timer >= 1000000000)
             {
-                if(GlobalData.Reset = true)
+                if(GlobalData.Reset == true && volleysShot == waveListHolder.WaveList.size())
                 {
-
+                    System.out.println("volleysShot: " + volleysShot);
+                    System.out.println("waveListHolder.WaveList.size(): " + waveListHolder.WaveList.size());
                     for(int x = 0; x < volleysShot; x++){
-                         //waveListHolder.WaveList().remove(x);
+                        if(waveListHolder.WaveList().get(x) != null)
+                        {
+                            waveListHolder.WaveList().remove(x);
+                        }else
+                        {
+                            System.out.println("its null");
+                        }
+                        System.out.println("x: " + x);
+                        System.out.println("waveListHolder.WaveList().remove(x); = " + waveListHolder.WaveList().remove(x));
                     }
                     GlobalData.Reset = false; 
                 }
-                System.out.println("FPS:" + drawCount);
+                //System.out.println("FPS:" + drawCount);
                 //System.out.println("currentPause:" + currentPause);
                 drawCount = 0;
                 timer = 0;
@@ -94,6 +104,7 @@ public class GamePanel extends JPanel implements Runnable
         }
         
     }
+    //This function paints the objects onto the panel
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
@@ -110,11 +121,20 @@ public class GamePanel extends JPanel implements Runnable
         g2.dispose();
         
     }
+    //This function sets the players color and paints them onto the screen
     public void paintPlayer(Graphics g2)
     {
-        g2.setColor(Color.green);
+        if(PlayerCode.currentDashCooldown < 0)
+        {
+            g2.setColor(Color.blue);
+        }else
+        {
+            g2.setColor(Color.green);
+        }
         g2.fillRect(playerCode.playerX, playerCode.playerY, playerCode.playerSize, playerCode.playerSize);
     }
+    //this function takes the data we recive from the bulletlist reader and the converts it 
+    //into bullets that appear on screen
     public void paintBullets(Graphics2D g2)
     {
         //System.out.println("waveListHolder.WaveList().size() == " + waveListHolder.WaveList().size());
@@ -143,31 +163,48 @@ public class GamePanel extends JPanel implements Runnable
                 //System.out.println("tempBullet.y After: " + tempBullet.y);
                 //System.out.println("TempBulletHolder.size: " + TempBulletHolder.size());
                 
-                bulletCollideWithEdge(tempBullet);
+                bulletCollideWithEdge(tempBullet,TempBulletHolder,i);
+                bulletCollideWithPlayer(tempBullet,TempBulletHolder,i);
                 
                 g2.fillRect((int)tempBullet.x, (int)tempBullet.y, tempBullet.Size, tempBullet.Size);
             }
             //System.out.println("Bullet Layer Complete now pause");
         }
     }
-    
-    public void bulletCollideWithEdge(BulletTemplate tempBullet)
+    //This function checks if the bullets collides with the edge of the screen
+    public void bulletCollideWithEdge(BulletTemplate tempBullet, List<BulletTemplate> bulletHolder, int i)
     {
         if(tempBullet.y > GlobalData.SCREENHEIGHT - 10){
             tempBullet.y = 0;
             //System.out.println("player touching bottom wall");
+            
+            //bulletHolder.remove(i);
         }
         if(tempBullet.y < 0){
             tempBullet.y = GlobalData.SCREENHEIGHT - 10;
             //System.out.println("player touching top wall");
+            
+            //bulletHolder.remove(i);
         }
         if(tempBullet.x > GlobalData.SCREENWIDTH - 10){
             tempBullet.x = 0;
             //System.out.println("player touching right wall");
+            
+            //bulletHolder.remove(i);
         }
         if(tempBullet.x < 0){
             tempBullet.x = GlobalData.SCREENWIDTH - 10;
             //System.out.println("player touching left wall");
+            //bulletHolder.remove(i);
+        }
+    }
+    public void bulletCollideWithPlayer(BulletTemplate tempBullet, List<BulletTemplate> bulletHolder, int i)
+    {
+        if(tempBullet.y > playerCode.playerY - playerCode.playerSize/2 && tempBullet.y < playerCode.playerY + playerCode.playerSize/2 &&
+           tempBullet.x > playerCode.playerX - playerCode.playerSize/2 && tempBullet.x < playerCode.playerX + playerCode.playerSize/2)
+        {
+            bulletHolder.remove(i);
+            //PlayerCode.playerHealth--;
         }
     }
 }

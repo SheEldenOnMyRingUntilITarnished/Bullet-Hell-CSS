@@ -15,15 +15,17 @@ public class PlayerCode
     int screenWidth = globalData.SCREENWIDTH;
     int screenHeight = globalData.SCREENHEIGHT;
     
+    int playerHealth = playerStats.playerHealth;
+    
     int playerSize = playerStats.playerSize;
     int playerX = playerStats.playerX;
     int playerY = playerStats.playerY;
     int playerXHOLD = playerStats.playerXHOLD;
     int playerYHOLD = playerStats.playerYHOLD;
-    int playerSpeed = playerStats.playerSpeed;
-    int playerMaxSpeed = playerStats.playerMaxSpeed;
-    int playerDashDistance = playerStats.playerDashDistance;
-    int playerDashCooldown = playerStats.playerDashCooldown;
+    int playerSpeed = playerStats.PLAYERSPEED;
+    int playerMaxSpeed = playerStats.PLAYERMAXSPEED;
+    int playerDashDistance = playerStats.PLAYERDASHDISTANCE;
+    int playerDashCooldown = playerStats.PLAYERDASHCOOLDOWN;
     static int currentDashCooldown = 0;
     
     public void update()
@@ -51,9 +53,24 @@ public class PlayerCode
         if(playerXHOLD > playerMaxSpeed){playerXHOLD = playerMaxSpeed;}
         if(playerXHOLD < -playerMaxSpeed){playerXHOLD = -playerMaxSpeed;}
         
+        
         if(keyH.dashPressed == true && currentDashCooldown < 0){
-            playerXHOLD += playerDashDistance;
-            currentDashCooldown = playerDashCooldown;
+            if(keyH.upPressed == true){
+                playerYHOLD -= playerDashDistance;
+                currentDashCooldown = playerDashCooldown;
+            }
+            if(keyH.downPressed == true){
+                playerYHOLD += playerDashDistance;
+                currentDashCooldown = playerDashCooldown;
+            }
+            if(keyH.leftPressed == true){
+                playerXHOLD -= playerDashDistance;
+                currentDashCooldown = playerDashCooldown;
+            }
+            if(keyH.rightPressed == true){
+                playerXHOLD += playerDashDistance;
+                currentDashCooldown = playerDashCooldown;
+            }
         }
         playerY += playerYHOLD;
         playerX += playerXHOLD;
